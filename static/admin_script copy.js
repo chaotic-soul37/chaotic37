@@ -4,14 +4,15 @@ const ADMIN_PASSWORD = "admin123"; // Change this to your desired password
 
 function validateAdmin() {
     const enteredPassword = document.getElementById("adminPassword").value;
-    if (enteredPassword == ADMIN_PASSWORD) {
+    if (enteredPassword === ADMIN_PASSWORD) {
         alert("logged in successfully!");
-        document.querySelector("div[bg-gray-800]").classList.add("hidden");
+        
+        document.getElementById("loginbox").classList.add("hidden");
         
         document.getElementById("adminPage").classList.remove("hidden");
         
     } else {
-        alert("Incorrect Passwor!");
+        alert("Incorrect Password!");
     }
 }
 
@@ -24,9 +25,7 @@ function addProfile() {
 }
 
 function logoutAdmin() {
-    document.getElementById("adminPage").classList.add("hidden");
-    document.querySelector("div[bg-gray-800]").classList.remove("hidden");
-    document.getElementById("adminPassword").value = "";
+    window.location.href = "/";
 }
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -58,3 +57,4 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
+

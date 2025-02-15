@@ -8,7 +8,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.js"></script>
 </head>
 <body class="bg-gray-900 text-white min-h-screen flex flex-col justify-center items-center">
-    <div class="bg-gray-800 p-6 rounded-lg shadow-lg w-96 text-center">
+    <div id="loginbox" class="bg-gray-800 p-6 rounded-lg shadow-lg w-96 text-center">
         <h1 class="text-2xl font-bold mb-4">Admin Login</h1>
         <div class="relative w-full">
             <input style="color: black;" type="password" id="adminPassword" placeholder="Enter Admin Password">   
@@ -16,13 +16,16 @@
         <button onclick="validateAdmin()" class="bg-blue-500 px-6 py-2 rounded mt-4">Login</button>
     </div>
 
-    <div id="adminPage" class="hidden container mx-auto px-4 py-6">
+    <div id="adminPage" class="hidden">
         <h1 class="text-2xl font-bold">Admin Panel</h1>
         <input type="text" id="newProfileName" placeholder="Enter new profile name"
             class="w-full px-4 py-2 rounded mb-2 bg-gray-200 text-black">
         <button onclick="addProfile()" class="bg-green-500 px-4 py-2 rounded">Add Profile</button>
-        <button onclick="logoutAdmin()" class="bg-gray-500 px-4 py-2 rounded ml-2">Logout</button>
+        <button onclick="rmv_profile()" class="bg-green-500 px-4 py-2 rounded">Remove Profile</button>
+        <button onclick="logoutAdmin()" class="bg-gray-500 px-4 py-2 rounded ml-2">Return to Dashboard</button>
     </div>
+
+    
 
     <script src="{{ url_for('static', filename='admin_script.js') }}"></script>
 </body>

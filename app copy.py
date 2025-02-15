@@ -2,7 +2,7 @@ from flask import Flask, render_template, jsonify
 from flask_socketio import SocketIO
 import datetime
 
-app = Flask(__name__)
+app = Flask(__name__,template_folder="templates")
 socketio = SocketIO(app, cors_allowed_origins="*")
 
 profiles = [
@@ -18,6 +18,10 @@ profiles = [
 
 def get_current_time():
     return datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    
+def logger():
+    pass
+
 
 @app.route('/')
 def index():
@@ -26,6 +30,11 @@ def index():
 @app.route('/profiles', methods=['GET'])
 def get_profiles():
     return jsonify(profiles)
+
+@app.route('/admin')
+def admin():
+    return render_template("admin.html")  # Serves the admin page
+
 
 @socketio.on('connect')
 def handle_connect():

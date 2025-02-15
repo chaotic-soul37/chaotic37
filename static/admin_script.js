@@ -25,9 +25,7 @@ function addProfile() {
 }
 
 function logoutAdmin() {
-    document.getElementById("adminPage").classList.add("hidden");
-    document.querySelector("div[bg-gray-800]").classList.remove("hidden");
-    document.getElementById("adminPassword").value = "";
+    window.location.href = "/";
 }
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -59,3 +57,4 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
+
