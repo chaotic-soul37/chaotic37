@@ -1,5 +1,5 @@
 
-const socket = io.connect("http://localhost:5000");
+const socket = io.connect("");
 const ADMIN_PASSWORD = "admin123"; // Change this to your desired password
 
 function validateAdmin() {
