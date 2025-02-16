@@ -17,11 +17,34 @@ function validateAdmin() {
 }
 
 function addProfile() {
-    const profileName = document.getElementById("newProfileName").value.trim();
-    if (profileName) {
-        socket.emit("add_profile", { name: profileName });
-        document.getElementById("newProfileName").value = "";
-    }
+    const profileName = document.getElementById("newProfileName").value;
+    fetch("/add_prfl", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ profileName }),
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            
+            alert(data.message);
+            document.getElementById("newProfileName").value = "";
+            
+        });
+}
+function rmv_profile() {
+    const profileName = document.getElementById("newProfileName").value;
+    fetch("/rmv_prfl", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ profileName }),
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            
+            alert(data.message);
+            document.getElementById("newProfileName").value = "";
+            
+        });
 }
 
 function logoutAdmin() {

@@ -1,5 +1,23 @@
 const socket = io.connect("http://localhost:5000");
 
+document.addEventListener("DOMContentLoaded", function() {
+    if (Notification.permission !== "granted") {
+        Notification.requestPermission();
+    }
+});
+
+socket.on("notify", function(data) {
+    if (Notification.permission === "granted") {
+        new Notification(data.title, {
+            body: data.message,
+            //icon: "https://example.com/notification-icon.png" // Optional
+        });
+    } else {
+        alert(data.message);  // Fallback for browsers without notifications
+    }
+});
+
+
 socket.on("update_profiles", (profiles) => {
     const container = document.getElementById("profilesContainer");
     container.innerHTML = profiles.map(profile => `
